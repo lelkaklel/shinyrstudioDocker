@@ -8,7 +8,7 @@ docker run -entrypoint="/usr/bin/with-contenv bash" --name shinyrstudio -d -p 87
   -v ~/docker/shiny/app/:/srv/shiny-server/ \
   -v ~/docker/shinyrstudio/admin_home:/home/admin/work \
   -v /srv/shinylog/:/var/log/ \
-  shinyrstudio:latest  
+  skranz/shinyrstudio:latest  
 ```
 
 ### port remapping
