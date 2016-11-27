@@ -8,7 +8,7 @@ To run the container adapt the following command:
 docker run -entrypoint="/usr/bin/with-contenv bash" --name shinyrstudio -d -p 8701:8787 -p 3801:3838 \
   -e ROOT=TRUE -e USER=<YourUsername> -e PASSWORD=<YourSecurePassword> \
   -v ~/docker/shiny/app/:/srv/shiny-server/ \
-  -v ~/docker/shinyrstudio/admin_home:/home/admin/work \
+  -v ~/docker/shinyrstudio/container_home:/home/<YourUsername>/work \
   -v /srv/shinylog/:/var/log/ \
   skranz/shinyrstudio:latest  
 ```
@@ -46,7 +46,7 @@ Yet attacks on the rstudio server port, may well happen. Picking a simple common
 The lines:
 ```
   -v ~/docker/shiny/app/:/srv/shiny-server/ \
-  -v ~/docker/shinyrstudio/admin_home:/home/admin/work \
+  -v ~/docker/shinyrstudio/container_home:/home/<YourUsername>/work \
   -v /srv/shinylog/:/var/log/ \
 ```
 mount different directories on your server (left of each :) to a directory in the docker container (right of each :). You can adapt the left directories but must keep the right directories as given.
@@ -57,7 +57,7 @@ The first line
 ```
 specifies the shiny apps directory on your server. The second line
 ```
-  -v ~/docker/shinyrstudio/admin_home:/home/admin/work \
+  -v ~/docker/shinyrstudio/container_home:/home/<YourUsername>/work \
 ```
-specifes the directory on your server that corresponds to the /home/admin directory in the container. That is the default directory, when you login as admin in RStudio.
+specifes the directory on your server that corresponds to the /home/<YourUsername> directory in the container. Please change <YourUsername> with your chosen username. That is the default directory, when you login into RStudio server.
 
