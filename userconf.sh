@@ -28,13 +28,16 @@ elif [ "$USER" != "rstudio" ]
 fi
 	
 
-if [ "$USER" == "admin"]
+if [ "$USER" != "rstudio"]
   then
 		# Create work directory that can be a mounted volume on the host
 		mkdir /home/$USER/work
-		# Create soft link to root directory (for RStudio to move around)
+		# Create soft link to root directory in container
+		# (for RStudio to move around)
 		ln -s / /home/$USER/root
 		ln -s /srv/shiny-server/ /home/$USER/shiny-server
+		# set all files to be owned by $USER
+		chown -R $USER /home/$USER
 fi
 	
 ## Add a password to user
