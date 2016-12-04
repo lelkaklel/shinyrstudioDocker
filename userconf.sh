@@ -28,13 +28,13 @@ elif [ "$USER" != "rstudio" ]
 fi
 	
 
-if [ "$USER" != "rstudio"]
+if [ "$USER" != "rstudio" ]
   then
 		# Create work directory that can be a mounted volume on the host
-		mkdir /home/$USER/work
+		mkdir -p /home/$USER/work
 		# Create soft link to root directory in container
 		# (for RStudio to move around)
-		ln -s / /home/$USER/root
+		ln -s / /home/$USER/rootdir
 		ln -s /srv/shiny-server/ /home/$USER/shiny-server
 		# set all files to be owned by $USER
 		chown -R $USER /home/$USER
